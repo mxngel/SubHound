@@ -40,8 +40,8 @@ def check_status(url):
     try:
         response = requests.head(url, allow_redirects=False, timeout=10)
         status_code = response.status_code
-        print(f"{url} - {status_code}")
-        return f"{url} - {status_code}\n"
+        print(f"[{status_code}] - {url}")
+        return f"[{status_code}] - {url}\n"
     except requests.exceptions.RequestException as e:
         pass
 
@@ -58,7 +58,7 @@ def main():
 
     domain = sys.argv[1]
     urls = crtdump(domain)
-    if len(urls) > 10:
+    if len(urls) > 0:
         print("Subdomains found!\n")
         time.sleep(1)
     else:
